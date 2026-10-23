@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101410">
+  <title>CotM Sim</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="cabinet" aria-label="Endless stairway game">
+      <div class="viewport" id="viewport">
+        <canvas id="game" width="960" height="640" tabindex="0" aria-describedby="controls" aria-label="Endless stairway platform game. Arrows move, X or Space jumps, Z or C uses the whip. Double tap a direction to dash. Press Escape to pause or R to toggle rendering style."></canvas>
+        <div class="screen-shade" aria-hidden="true"></div>
+        <div class="scanlines" id="scanlines" aria-hidden="true"></div>
+        <div class="overlay" id="overlay">
+          <h2 id="overlay-title">CotM Sim</h2>
+          <button class="primary" id="begin">Play</button>
+          <span class="overlay-hint" id="overlay-hint">Enter to start</span>
+        </div>
+      </div>
+      <div class="player-controls" aria-label="Player controls">
+        <div class="tools">
+          <button id="sound" class="icon-button" aria-label="Turn music and sound on" title="Original music and sound" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4zM16 9l5 6m0-6-5 6"/></svg></button>
+          <button id="crt" class="text-button" aria-pressed="true">Scanlines: on</button>
+        </div>
+        <div class="tools">
+          <button id="restart" class="icon-button" aria-label="Restart game" title="Restart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10a9 9 0 1 1 2 8M3 4v6h6"/></svg></button>
+          <button id="pause" class="icon-button" aria-label="Pause game" title="Pause (Esc)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button>
+          <button id="fullscreen" class="icon-button" aria-label="Enter fullscreen" title="Fullscreen (F)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6"/></svg></button>
+        </div>
+      </div>
+    </section>
+    <div class="touch-controls" aria-label="Touch controls">
+      <div><button data-key="left" aria-label="Move left">←</button><button data-key="down" aria-label="Crouch">↓</button><button data-key="right" aria-label="Move right">→</button></div><div><button data-key="attack" aria-label="Use whip">WHIP</button><button class="touch-jump" data-key="jump" aria-label="Jump">JUMP</button></div>
+    </div>
+    <section class="controls" id="controls" aria-label="Controls">
+      <div><kbd class="wide-key">← →</kbd><span>Walk</span></div>
+      <div><span class="key-pair"><kbd>→</kbd><kbd>→</kbd></span><span>Double-tap to dash</span></div>
+      <div><kbd class="wide-key">SPACE / X</kbd><span>Jump · again in air</span></div>
+      <div><kbd>↓</kbd><span>Crouch</span></div>
+      <div><kbd class="wide-key">Z / C</kbd><span>Whip · hold ↓ for low</span></div>
+      <div><kbd>R</kbd><span>Toggle rendering style · whole game</span></div>
+      <div><kbd class="wide-key">ESC / P</kbd><span>Pause / resume</span></div>
+      <div><kbd>F</kbd><span>Fullscreen</span></div>
+    </section>
+  </main>
+  <script src="level.js"></script>
+  <script src="engine.js"></script>
+  <script src="enemies/medusa-head.js"></script>
+  <script src="enemies/gargoyle.js"></script>
+  <script src="enemies.js"></script>
+  <script src="combat.js"></script>
+  <script src="breakables.js"></script>
+  <script src="animation.js"></script>
+  <script src="character.js"></script>
+  <script src="enemy-sprites.js"></script>
+  <script src="enemy-effects.js"></script>
+  <script src="enemy-renderer.js"></script>
+  <script src="flames.js"></script>
+  <script src="enemy-name.js"></script>
+  <script src="breakable-renderer.js"></script>
+  <script src="costume-effects.js"></script>
+  <script src="player-effects.js"></script>
+  <script src="renderer.js"></script>
+  <script src="display.js"></script>
+  <script src="assets/audio/audio-data.js"></script>
+  <script src="audio.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
