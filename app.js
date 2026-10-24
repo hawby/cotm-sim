@@ -11,7 +11,7 @@
   if(window.StairEnemyName)window.StairEnemyName.reset(game);
   const keys={},touch={},pad={};
   const audio=StairAudio.createPlayer();
-  let accumulator=0,lastTime=0,sound=false,saveTimer=0;
+  let accumulator=0,lastTime=0,sound=true,saveTimer=0;
   const keyMap={ArrowLeft:'left',ArrowRight:'right',ArrowDown:'down',Space:'jump',KeyX:'jump',KeyZ:'attack',KeyC:'attack'};
   const soundPaths={off:'M11 5 6 9H3v6h3l5 4zM16 9l5 6m0-6-5 6',on:'M11 5 6 9H3v6h3l5 4zM15 8c3 2 3 6 0 8m3-11c5 3 5 11 0 14'};
   // Retain the existing saved preference; it now controls the whole scene.
@@ -66,7 +66,9 @@
   function act(){if(game.state==='title')start();else if(game.state==='paused')pause();}
   $('begin').addEventListener('click',act);$('pause').addEventListener('click',pause);
   $('restart').addEventListener('click',()=>{clearInput();start();});
-  $('sound').addEventListener('click',()=>{sound=!sound;initSound();audio.setEnabled(sound);$('sound').setAttribute('aria-pressed',String(sound));$('sound').setAttribute('aria-label',sound?'Turn music and sound off':'Turn music and sound on');$('sound').querySelector('path').setAttribute('d',sound?soundPaths.on:soundPaths.off);});
+  function syncSound(){audio.setEnabled(sound);$('sound').setAttribute('aria-pressed',String(sound));$('sound').setAttribute('aria-label',sound?'Turn music and sound off':'Turn music and sound on');$('sound').querySelector('path').setAttribute('d',sound?soundPaths.on:soundPaths.off);}
+  syncSound();
+  $('sound').addEventListener('click',()=>{sound=!sound;initSound();syncSound();});
   async function fullscreen(){try{if(document.fullscreenElement)await document.exitFullscreen();else await $('viewport').requestFullscreen();}catch{$('fullscreen').title='Fullscreen unavailable in this browser';}}
   $('fullscreen').addEventListener('click',fullscreen);
   document.addEventListener('fullscreenchange',()=>$('fullscreen').setAttribute('aria-label',document.fullscreenElement?'Exit fullscreen':'Enter fullscreen'));
